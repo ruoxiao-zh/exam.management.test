@@ -32,6 +32,6 @@ class Controller extends BaseController
             return view('index', compact('result'));
         }
 
-        return back()->withErrors('注意: 没有查到成绩，请仔细检查所填写信息后，再次查询');
+        return back()->withErrors('注意: 没有查到成绩，请仔细检查所填写信息后，再次查询')->withInput();
     }
 }
