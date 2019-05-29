@@ -12,5 +12,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
 
+    $router->resource('results', ResultController::class);
+
     $router->resource('import', UploadController::class);
 });

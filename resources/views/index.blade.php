@@ -20,27 +20,30 @@
     <![endif]-->
 
     <style>
-        html{
+        html {
             height: 100%;
         }
-        body{
+
+        body {
             min-height: 100%;
         }
+
         body, html {
             overflow-x: hidden;
         }
+
         .bs-docs-home {
             background-color: #ffffff;
         }
 
         .header {
             background-color: #428bca;
-            height: 80px;
+            height: 60px;
         }
 
         .header > span {
-            vertical-align:middle;
-            line-height: 80px;
+            vertical-align: middle;
+            line-height: 60px;
             margin-left: 20px;
             font-size: 25px;
             color: #ffffff;
@@ -48,7 +51,7 @@
 
         .footer {
             background-color: #428bca;
-            height: 50px;
+            height: 35px;
             position: absolute;
             left: 0;
             bottom: 0;
@@ -56,7 +59,7 @@
 
         .footer > span {
             vertical-align: middle;
-            line-height: 50px;
+            line-height: 35px;
         }
     </style>
 </head>
@@ -79,79 +82,92 @@
                     </h3>
                 </div>
                 <div class="panel-body">
+
                     @include('shared._errors')
-                    {{--                    <div class="alert alert-danger alert-dismissable">--}}
-                    {{--                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>--}}
-                    {{--                        <strong>注意!</strong> 本站查询的分数来源于12333官网，详情请到官网咨询--}}
-                    {{--                    </div>--}}
 
-                    <div class="flash-message">
-                        <p class="alert alert-info">
-                            温馨提示: 请输入正确的姓名与准考证号, 如果查询结果有误, 请联系负责老师
-                        </p>
-                    </div>
-                    <form role="form" name="form1">
+                    <form accept-charset="UTF-8" action="{{ route('search') }}" method="post">
+
+                        {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                            <label for="exampleInputNo">考生号</label>
+                            <input type="text" class="form-control" id="exampleInputNo" placeholder="请输入考生号" name="no"
+                                   @if(!isset($result)) value="{{ old('no') }}" @else value="{{ $result->no }}" @endif>
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                   placeholder="Password">
+                            <label for="exampleInputExamRegistrationNumber">准考证号</label>
+                            <input type="text" class="form-control" id="exampleInputExamRegistrationNumber"
+                                   placeholder="请输入准考证号"
+                                   name="exam_registration_number"
+                                   @if(!isset($result)) value="{{ old('exam_registration_number') }}"
+                                   @else value="{{ $result->exam_registration_number }}" @endif>
                         </div>
+
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-block btn-lg">点击查询考试成绩</button>
+                            <label for="exampleInputName">考生姓名</label>
+                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名"
+                                   name="name"
+                                   @if(!isset($result)) value="{{ old('name') }}"
+                                   @else value="{{ $result->name }}" @endif>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">点击查询考试成绩</button>
                         </div>
 
                     </form>
 
-{{--                    <div class="alert alert-danger alert-dismissable">--}}
-{{--                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>--}}
-{{--                        <strong>注意!</strong> 没有查到成绩，请检查身份证号码和科目后，再次查询--}}
-{{--                    </div>--}}
-
-                    <div class="table-responsive">
-                        <table border="0" cellspacing="0" cellpadding="0" class="table">
-                            <tr class=" label-primary">
-                                <th scope="col" width="50%"><span style="color:white">科目</span></th>
-                                <th scope="col"><span style="color:white">成绩</span></th>
-                            </tr>
-                            <tr class="active">
-                                <td width="50%">计算机操作员</td>
-                                <td>没有成绩</td>
-                            </tr>
-                            <tr class="success">
-                                <td>计算机操作员</td>
-                                <td>优秀</td>
-                            </tr>
-                            <tr class="active">
-                                <td>多媒体操作员</td>
-                                <td>良好</td>
-                            </tr>
-                            <tr class="success">
-                                <td>网页设计</td>
-                                <td>不及格</td>
-                            </tr>
-                            <tr class="active">
-                                <td>多媒体操作员</td>
-                                <td>良好</td>
-                            </tr>
-                            <tr class="success">
-                                <td>网页设计</td>
-                                <td>不及格</td>
-                            </tr>
-                            <tr class="active">
-                                <td>多媒体操作员</td>
-                                <td>良好</td>
-                            </tr>
-                            <tr class="success">
-                                <td>网页设计</td>
-                                <td>不及格</td>
-                            </tr>
-                        </table>
-                    </div>
+                    @if(isset($result) && !empty($result))
+                        <div class="table-responsive">
+                            <table border="0" cellspacing="0" cellpadding="0" class="table">
+                                <tr class=" label-primary">
+                                    <th scope="col" width="50%"><span style="color:white">科目</span></th>
+                                    <th scope="col"><span style="color:white">成绩</span></th>
+                                </tr>
+                                <tr class="active">
+                                    <td width="50%">语文</td>
+                                    <td>{{ $result->chinese }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>数学</td>
+                                    <td>{{ $result->mathematics }}</td>
+                                </tr>
+                                <tr class="active">
+                                    <td>英语</td>
+                                    <td>{{ $result->english }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>理科综合</td>
+                                    <td>{{ $result->science }}</td>
+                                </tr>
+                                <tr class="active">
+                                    <td>文科综合</td>
+                                    <td>{{ $result->arts }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>体育</td>
+                                    <td>{{ $result->physical_education }}</td>
+                                </tr>
+                                <tr class="active">
+                                    <td>优惠</td>
+                                    <td>{{ $result->discounts }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>理化</td>
+                                    <td>{{ $result->physicochemical }}</td>
+                                </tr>
+                                <tr class="active">
+                                    <td>信息</td>
+                                    <td>{{ $result->information_technology }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td style="color: red">总分</td>
+                                    <td style="color: red">{{ $result->total_points }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -160,11 +176,11 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-sm-12 footer" style="text-align: center;">
-        <span>Copyright ©2019 万全区教育局 v1.0.0 All Rights Reserved.</span>
-    </div>
-</div>
+{{--<div class="row">--}}
+{{--    <div class="col-sm-12 footer" style="text-align: center;">--}}
+{{--        <span>Copyright ©2019 万全区教育局 v1.0.0 All Rights Reserved.</span>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
