@@ -106,6 +106,8 @@ class ResultController extends Controller
             $filter->like('name', '姓名');
         });
 
+        $grid->paginate(15);
+
         return $grid;
     }
 

@@ -12,12 +12,14 @@
         <!-- form start -->
         <form action="{{ route('import') }}" method="post" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" pjax-container="">
 
+            @include('shared._errors')
+
             <div class="box-body">
                 <div class="fields-group">
                     <div class="form-group  ">
                         <label for="tt" class="col-sm-2  control-label">上传文件</label>
                         <div class="col-sm-8">
-                            <input type="file" class="upfile" name="file">
+                            <input type="file" class="upfile" name="excel">
                         </div>
                     </div>
                 </div>
@@ -36,9 +38,10 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="_previous_" value="{{URL::current()}}" class="_previous_">
             <!-- /.box-footer -->
         </form>
     </div>
-    <div class="alert alert-info" role="alert">提示。。。balabala</div>
+
+    @include('shared._messages')
+
 </div>

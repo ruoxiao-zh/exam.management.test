@@ -6,9 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\ResultImport;
 use App\Result;
 use Encore\Admin\Form;
-use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
-use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\HasResourceActions;
 use Illuminate\Http\Request;
 use Excel;
@@ -22,10 +20,7 @@ class UploadController extends Controller
         return $content
             ->header('成绩导入')
             ->description('请导入考生成绩')
-            ->body(
-                view('upload')
-            // $this->form()
-            );
+            ->body(view('upload'));
     }
 
     public function form()
@@ -48,25 +43,22 @@ class UploadController extends Controller
             $footer->disableCreatingCheck();
         });
 
-//        $form->text('title', 'Title');
-//        $form->textarea('content', 'Content');
-//        $form->number('user_id', 'User id');
-
         return $form;
     }
 
-    public function create(Content $content)
-    {
-//        return $content
-//            ->header('Create')
-//            ->description('description')
-//            ->body($this->form());
-    }
 
     public function import(Request $request, ResultImport $resultImport)
     {
+        $this->validate($request, [
+            'excel' => 'required',
+        ], [
+            'excel.required' => 'Excel 不能为空',
+        ]);
+
         \Excel::import($resultImport, $request->file('excel'));
 
-        return back()->with('success', '导入成功');
+        session()->flash('ok', '数据导入成功!');
+
+        return redirect('/admin/upload');
     }
 }
