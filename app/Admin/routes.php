@@ -14,5 +14,7 @@ Route::group([
 
     $router->resource('results', ResultController::class);
 
-    $router->resource('import', UploadController::class);
+    $router->resource('upload', UploadController::class);
+
+    $router->post('import', 'UploadController@import')->name('import');
 });

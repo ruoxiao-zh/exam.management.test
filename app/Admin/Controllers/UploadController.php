@@ -3,12 +3,15 @@
 namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Imports\ResultImport;
 use App\Result;
 use Encore\Admin\Form;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
 use Encore\Admin\Controllers\HasResourceActions;
+use Illuminate\Http\Request;
+use Excel;
 
 class UploadController extends Controller
 {
@@ -19,7 +22,10 @@ class UploadController extends Controller
         return $content
             ->header('成绩导入')
             ->description('请导入考生成绩')
-            ->body($this->form());
+            ->body(
+                view('upload')
+            // $this->form()
+            );
     }
 
     public function form()
@@ -55,5 +61,12 @@ class UploadController extends Controller
 //            ->header('Create')
 //            ->description('description')
 //            ->body($this->form());
+    }
+
+    public function import(Request $request, ResultImport $resultImport)
+    {
+        \Excel::import($resultImport, $request->file('excel'));
+
+        return back()->with('success', '导入成功');
     }
 }
