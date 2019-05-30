@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <label for="exampleInputNo">考生号</label>
                             <input type="text" class="form-control" id="exampleInputNo" placeholder="请输入考生号" name="no"
-                                   @if(!isset($result)) value="{{ old('no') }}" @else value="{{ $result->no }}" @endif>
+                                   value="{{ old('no') }}">
                         </div>
 
                         <div class="form-group">
@@ -102,16 +102,12 @@
                             <input type="text" class="form-control" id="exampleInputExamRegistrationNumber"
                                    placeholder="请输入准考证号"
                                    name="exam_registration_number"
-                                   @if(!isset($result)) value="{{ old('exam_registration_number') }}"
-                                   @else value="{{ $result->exam_registration_number }}" @endif>
+                                   value="{{ old('exam_registration_number') }}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputName">考生姓名</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名"
-                                   name="name"
-                                   @if(!isset($result)) value="{{ old('name') }}"
-                                   @else value="{{ $result->name }}" @endif>
+                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名" name="name" value="{{ old('name') }}">
                         </div>
 
                         <div class="form-group">
