@@ -20,16 +20,16 @@
     <![endif]-->
 
     <style>
-        html {
+        body, html {
+            overflow-x: hidden;
             height: 100%;
-        }
-
-        body {
+            margin: 0;
+            padding: 0;
             min-height: 100%;
         }
 
-        body, html {
-            overflow-x: hidden;
+        .container {
+            min-height: 838px;
         }
 
         .bs-docs-home {
@@ -38,21 +38,22 @@
 
         .header {
             background-color: #428bca;
-            height: 60px;
+            height: 45px;
         }
 
         .header > span {
             vertical-align: middle;
-            line-height: 60px;
+            line-height: 45px;
             margin-left: 20px;
-            font-size: 25px;
+            font-size: 20px;
             color: #ffffff;
         }
 
         .footer {
             background-color: #428bca;
             height: 35px;
-            position: absolute;
+            width: 100%;
+            position: relative;
             left: 0;
             bottom: 0;
         }
@@ -60,6 +61,7 @@
         .footer > span {
             vertical-align: middle;
             line-height: 35px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -71,7 +73,7 @@
     </div>
 </div>
 <div class="container theme-showcase">
-    <h1 style=" line-height:2em;"></h1><br/>
+    <h3 style=" line-height:1em;"></h3><br/>
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
@@ -176,11 +178,11 @@
     </div>
 </div>
 
-{{--<div class="row">--}}
-{{--    <div class="col-sm-12 footer" style="text-align: center;">--}}
-{{--        <span>Copyright ©2019 万全区教育局 v1.0.0 All Rights Reserved.</span>--}}
-{{--    </div>--}}
-{{--</div>--}}
+<div class="row">
+    <div class="col-sm-12 footer" style="text-align: center;">
+        <span>Copyright ©2019 万全区教育局 v1.0.0 All Rights Reserved.</span>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
