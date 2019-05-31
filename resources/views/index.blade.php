@@ -12,12 +12,8 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap-theme.min.css">
 
-    <!--[if lt IE 9]>
-    <script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
 
     <style>
         body, html {
@@ -94,20 +90,20 @@
                         <div class="form-group">
                             <label for="exampleInputNo">考生号</label>
                             <input type="text" class="form-control" id="exampleInputNo" placeholder="请输入考生号" name="no"
-                                   value="{{ old('no') }}">
+                                   @if(isset($result)) value="{{ $result->no }}" @else value="{{ old('no') }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputExamRegistrationNumber">准考证号</label>
-                            <input type="text" class="form-control" id="exampleInputExamRegistrationNumber"
-                                   placeholder="请输入准考证号"
+                            <input type="text" class="form-control" id="exampleInputExamRegistrationNumber" placeholder="请输入准考证号"
                                    name="exam_registration_number"
-                                   value="{{ old('exam_registration_number') }}">
+                                   @if(isset($result)) value="{{ $result->exam_registration_number }}" @else value="{{ old('exam_registration_number') }}" @endif>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputName">考生姓名</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名" `name="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名" name="name"
+                                   @if(isset($result)) value="{{ $result->name }}" @else value="{{ old('name') }}" @endif>
                         </div>
 
                         <div class="form-group">
@@ -116,7 +112,7 @@
 
                     </form>
 
-                    @if(isset($result) && !empty($result))
+                    @if(isset($result))
                         <div class="table-responsive">
                             <table border="0" cellspacing="0" cellpadding="0" class="table">
                                 <tr class=" label-primary">
