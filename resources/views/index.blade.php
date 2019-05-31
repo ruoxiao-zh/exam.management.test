@@ -107,7 +107,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputName">考生姓名</label>
-                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名" name="name" value="{{ old('name') }}">
+                            <input type="text" class="form-control" id="exampleInputName" placeholder="请输入考生姓名" `name="name" value="{{ old('name') }}">
                         </div>
 
                         <div class="form-group">
