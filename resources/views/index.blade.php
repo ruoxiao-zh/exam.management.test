@@ -172,7 +172,7 @@
 
 <div class="row">
     <div class="col-sm-12 footer" style="text-align: center;">
-        <span>Copyright ©2019 万全区教育和体育局 v1.0.0 All Rights Reserved.</span>
+        <span>Copyright © 万全区教育和体育局 冀ICP备18018379号-1</span>
     </div>
 </div>
 
