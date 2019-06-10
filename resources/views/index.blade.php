@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>万全区教育局考试成绩查询</title>
+    <title>张家口市万全区教育和体育局成绩查询</title>
 
     <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap-theme.min.css">
@@ -65,7 +65,7 @@
 <body class="bs-docs-home">
 <div class="row">
     <div class="col-sm-12 header">
-        <span>万全区教育局考试成绩查询系统</span>
+        <span>张家口市万全区教育和体育局成绩查询系统</span>
     </div>
 </div>
 <div class="container theme-showcase">
@@ -76,7 +76,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title" style="text-align: center;">
-                        <strong>万全区教育局考试成绩查询系统</strong>
+                        <strong>张家口市万全区教育和体育局成绩查询系统</strong>
                     </h3>
                 </div>
                 <div class="panel-body">
@@ -172,7 +172,7 @@
 
 <div class="row">
     <div class="col-sm-12 footer" style="text-align: center;">
-        <span>Copyright ©2019 万全区教育局 v1.0.0 All Rights Reserved.</span>
+        <span>Copyright ©2019 万全区教育和体育局 v1.0.0 All Rights Reserved.</span>
     </div>
 </div>
 
